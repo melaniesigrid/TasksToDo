@@ -2,7 +2,8 @@
 import _ from 'lodash';
 import './style.css';
 
-let tasks = [{
+let tasks = [
+  {
     description: 'Task 1',
     completed: false,
     index: 1,
@@ -48,7 +49,7 @@ const generateList = () => {
 
     const taskLabel = document.createElement('label');
     taskLabel.htmlFor = `task-number-${item.index}`;
-    taskLabel.appendChild(document.createTextNode(`${item.description}`))
+    taskLabel.appendChild(document.createTextNode(`${item.description}`));
     listItem.appendChild(taskLabel);
 
     const kebab = document.createElement('i');
@@ -61,6 +62,5 @@ const generateList = () => {
     myList.appendChild(listItem);
   });
 };
-
 
 document.addEventListener('DOMContentLoaded', generateList());

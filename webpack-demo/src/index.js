@@ -2,8 +2,7 @@
 import _ from 'lodash';
 import './style.css';
 
-const tasks = [
-  {
+const tasks = [{
     description: 'Task 1',
     completed: false,
     index: 1,
@@ -28,7 +27,7 @@ const tasks = [
     completed: false,
     index: 5,
   },
-    {
+  {
     description: 'Task 6',
     completed: false,
     index: 6,

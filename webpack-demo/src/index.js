@@ -2,7 +2,7 @@
 import _ from 'lodash';
 import './style.css';
 
-const tasks = [
+let tasks = [
   {
     description: 'Task 1',
     completed: false,
@@ -28,7 +28,7 @@ const tasks = [
     completed: false,
     index: 5,
   },
-    {
+  {
     description: 'Task 6',
     completed: false,
     index: 6,
@@ -36,19 +36,31 @@ const tasks = [
 ];
 
 const myList = document.querySelector('.task-lists');
-const itemIterate = (myList) => {
+const generateList = () => {
+  tasks = tasks.sort((a, b) => a.index - b.index);
   tasks.forEach((item) => {
     const listItem = document.createElement('div');
     listItem.classList.add('item');
-    listItem.innerHTML = `
-      <input type="checkbox" id="task-number-${item.index}"/>
-      <label for="task-number-${item.index}">
-        ${item.description}
-      </label>
-      <i class="fas fa-ellipsis-v icon three-dots"></i>
-    `;
+
+    const itemCheckbox = document.createElement('input');
+    itemCheckbox.type = 'checkbox';
+    itemCheckbox.id = `task-number-${item.index}`;
+    listItem.appendChild(itemCheckbox);
+
+    const taskLabel = document.createElement('label');
+    taskLabel.htmlFor = `task-number-${item.index}`;
+    taskLabel.appendChild(document.createTextNode(`${item.description}`));
+    listItem.appendChild(taskLabel);
+
+    const kebab = document.createElement('i');
+    kebab.classList.add('fas');
+    kebab.classList.add('fa-ellipsis-v');
+    kebab.classList.add('icon');
+    kebab.classList.add('three-dots');
+    listItem.appendChild(kebab);
+
     myList.appendChild(listItem);
   });
 };
 
-document.addEventListener('DOMContentLoaded', itemIterate(myList));
+document.addEventListener('DOMContentLoaded', generateList());

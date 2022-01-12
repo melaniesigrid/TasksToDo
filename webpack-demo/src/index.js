@@ -28,6 +28,11 @@ const tasks = [
     completed: false,
     index: 5,
   },
+    {
+    description: 'Task 6',
+    completed: false,
+    index: 6,
+  },
 ];
 
 const myList = document.querySelector('.task-lists');

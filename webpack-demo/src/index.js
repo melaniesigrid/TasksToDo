@@ -1,10 +1,13 @@
 /* eslint-disable no-unused-vars */
+// eslint-disable-next-line import/no-cycle
+
 import _ from 'lodash';
 import './style.css';
 
 import {
   add,
   clearDiv,
+  changeInput,
   removeItemAt,
   updateStorageValue
 } from './addRemove.js';
@@ -68,6 +71,7 @@ myList.addEventListener('click', (event) => {
 myList.addEventListener('change', (e) => {
   let changedElement = e.target;
   console.log(changedElement);
+  changeInput(changedElement);
 });
 
 

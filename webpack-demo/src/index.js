@@ -8,17 +8,14 @@ import {
   add,
   clearDiv,
   changeInput,
-  removeItemAt,
-  updateStorageValue
+  removeItemAt
 } from './addRemove.js';
 
-export var tasks = [];
-// export let count = 0;
+export let tasks = [];
 
 const myList = document.querySelector('.task-lists');
 
 export const generateList = (array) => {
-
   array = array.sort((a, b) => a.index - b.index);
 
   clearDiv(myList);
@@ -51,7 +48,7 @@ export const generateList = (array) => {
   }
 };
 
-document.querySelector('#add-input').addEventListener('keypress', function (e) {
+document.querySelector('#add-input').addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     add();
     const retrievedList = JSON.parse(localStorage.getItem('list'));
@@ -60,20 +57,18 @@ document.querySelector('#add-input').addEventListener('keypress', function (e) {
 });
 
 myList.addEventListener('click', (event) => {
-  let elementClicked = event.target;
-  let job = elementClicked.getAttribute('job');
-  let clickedIndex = elementClicked.getAttribute('index');
-  if (job == 'delete') {
+  const elementClicked = event.target;
+  const job = elementClicked.getAttribute('job');
+  const clickedIndex = elementClicked.getAttribute('index');
+  if (job === 'delete') {
     removeItemAt(clickedIndex);
   }
 });
 
 myList.addEventListener('change', (e) => {
-  let changedElement = e.target;
-  console.log(changedElement);
+  const changedElement = e.target;
   changeInput(changedElement);
 });
-
 
 export const saveDataLocally = (toSave) => {
   const stringifiedList = JSON.stringify(toSave);
@@ -85,5 +80,5 @@ window.onload = () => {
     const retrievedList = JSON.parse(localStorage.getItem('list'));
     tasks = retrievedList;
     generateList(tasks);
-  }
+  };
 };

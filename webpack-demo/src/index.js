@@ -2,65 +2,85 @@
 import _ from 'lodash';
 import './style.css';
 
-let tasks = [
-  {
-    description: 'Task 1',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Task 2',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'Task 3',
-    completed: false,
-    index: 3,
-  },
-  {
-    description: 'Task 4',
-    completed: false,
-    index: 4,
-  },
-  {
-    description: 'Task 5',
-    completed: false,
-    index: 5,
-  },
-  {
-    description: 'Task 6',
-    completed: false,
-    index: 6,
-  },
-];
+// eslint-disable-next-line import/no-cycle
+import {
+  add,
+  clearDiv,
+  changeInput,
+  removeItemAt,
+} from './addRemove.js';
+
+let tasks = [];
+export function myTasks() {
+  return tasks;
+}
 
 const myList = document.querySelector('.task-lists');
-const generateList = () => {
-  tasks = tasks.sort((a, b) => a.index - b.index);
-  tasks.forEach((item) => {
-    const listItem = document.createElement('div');
+
+export const generateList = (array) => {
+  array = array.sort((a, b) => a.index - b.index);
+
+  clearDiv(myList);
+
+  for (let i = 0; i < array.length; i += 1) {
+    const item = array[i];
+    item.index = i + 1;
+    const listItem = document.createElement('li');
     listItem.classList.add('item');
 
     const itemCheckbox = document.createElement('input');
     itemCheckbox.type = 'checkbox';
-    itemCheckbox.id = `task-number-${item.index}`;
+    itemCheckbox.setAttribute('index', `${item.index}`);
     listItem.appendChild(itemCheckbox);
 
-    const taskLabel = document.createElement('label');
-    taskLabel.htmlFor = `task-number-${item.index}`;
-    taskLabel.appendChild(document.createTextNode(`${item.description}`));
-    listItem.appendChild(taskLabel);
+    const taskInput = document.createElement('input');
+    taskInput.setAttribute('type', 'text');
+    taskInput.setAttribute('index', `${item.index}`);
+    taskInput.setAttribute('value', `${item.description}`);
+    taskInput.classList.add('description-text');
+    listItem.appendChild(taskInput);
 
-    const kebab = document.createElement('i');
-    kebab.classList.add('fas');
-    kebab.classList.add('fa-ellipsis-v');
-    kebab.classList.add('icon');
-    kebab.classList.add('three-dots');
-    listItem.appendChild(kebab);
+    const garbage = document.createElement('i');
+    garbage.classList.add('fas', 'fa-trash-alt', 'icon', 'trash');
+    garbage.setAttribute('index', `${item.index}`);
+    garbage.setAttribute('job', 'delete');
+    listItem.appendChild(garbage);
 
     myList.appendChild(listItem);
-  });
+  }
 };
 
-document.addEventListener('DOMContentLoaded', generateList());
+document.querySelector('#add-input').addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    add();
+    const retrievedList = JSON.parse(localStorage.getItem('list'));
+    generateList(retrievedList);
+  }
+});
+
+myList.addEventListener('click', (event) => {
+  const elementClicked = event.target;
+  const job = elementClicked.getAttribute('job');
+  const clickedIndex = elementClicked.getAttribute('index');
+  if (job === 'delete') {
+    removeItemAt(clickedIndex);
+  }
+});
+
+myList.addEventListener('change', (e) => {
+  const changedElement = e.target;
+  changeInput(changedElement);
+});
+
+export const saveDataLocally = (toSave) => {
+  const stringifiedList = JSON.stringify(toSave);
+  localStorage.setItem('list', stringifiedList);
+};
+
+window.onload = () => {
+  if (localStorage.getItem('list') !== null) {
+    const retrievedList = JSON.parse(localStorage.getItem('list'));
+    tasks = retrievedList;
+    generateList(tasks);
+  }
+};

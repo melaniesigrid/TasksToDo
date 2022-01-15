@@ -68,7 +68,7 @@ myList.addEventListener('click', (event) => {
 });
 
 myList.addEventListener('change', (e) => {
-  let changedElement = e.target;
+  const changedElement = e.target;
   changeInput(changedElement);
 });
 

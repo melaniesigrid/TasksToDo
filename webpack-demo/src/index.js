@@ -5,7 +5,6 @@ import './style.css';
 // eslint-disable-next-line import/no-cycle
 import {
   add,
-  tasks,
   clearDiv,
   changeInput,
   removeItemAt,
@@ -14,7 +13,6 @@ import {
 const myList = document.querySelector('.task-lists');
 
 export const generateList = (array) => {
-  let tasks = [];
   array = array.sort((a, b) => a.index - b.index);
 
   clearDiv(myList);
@@ -77,7 +75,6 @@ export const saveDataLocally = (toSave) => {
 window.onload = () => {
   if (localStorage.getItem('list') !== null) {
     const retrievedList = JSON.parse(localStorage.getItem('list'));
-    tasks = retrievedList;
-    generateList(tasks);
+    generateList(retrievedList);
   }
 };

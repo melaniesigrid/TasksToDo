@@ -4,7 +4,7 @@ import { generateList, saveDataLocally } from './index.js';
 
 export const add = () => {
   const textInputValue = document.querySelector('#add-input').value;
-  let retrievedList = JSON.parse(localStorage.getItem('list'));
+  const retrievedList = JSON.parse(localStorage.getItem('list'));
   const TaskItem = {
     description: textInputValue,
     completed: false,
@@ -23,13 +23,14 @@ export const clearDiv = (div) => {
 };
 
 export const removeItemAt = (index) => {
-  tasks.splice(index - 1, 1);
+  const retrievedList = JSON.parse(localStorage.getItem('list'));
+  retrievedList.splice(index - 1, 1);
   generateList(retrievedList);
   saveDataLocally(retrievedList);
 };
 
 export const changeInput = (element) => {
-  let retrievedList = JSON.parse(localStorage.getItem('list'));
+  const retrievedList = JSON.parse(localStorage.getItem('list'));
   const newDescription = element.value;
   const elementIndex = element.getAttribute('index');
   retrievedList[elementIndex - 1].description = newDescription;

@@ -14,6 +14,7 @@ import {
 const myList = document.querySelector('.task-lists');
 
 export const generateList = (array) => {
+  let tasks = [];
   array = array.sort((a, b) => a.index - b.index);
 
   clearDiv(myList);

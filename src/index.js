@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import _ from 'lodash';
+// import _ from 'lodash';
 import './style.css';
 // eslint-disable-next-line import/no-cycle
 import {

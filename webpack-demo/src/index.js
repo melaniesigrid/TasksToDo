@@ -76,5 +76,7 @@ window.onload = () => {
   if (localStorage.getItem('list') !== null) {
     const retrievedList = JSON.parse(localStorage.getItem('list'));
     generateList(retrievedList);
+  } else {
+    generateList([]);
   }
 };

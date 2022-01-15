@@ -9,9 +9,9 @@ export const add = () => {
     description: textInputValue,
     completed: false,
     index: tasks.length + 1,
-  }
+  };
 
-  let addedItem = TaskItem;
+  const addedItem = TaskItem;
   tasks.push(addedItem);
   saveDataLocally(tasks);
 };
@@ -29,10 +29,8 @@ export const removeItemAt = (index) => {
 }
 
 export const changeInput = (element) => {
-  let newDescription = element.value;
-  let elementIndex = element.getAttribute('index');
-  console.log(newDescription);
-  console.log(elementIndex);
+  const newDescription = element.value;
+  const elementIndex = element.getAttribute('index');
   tasks[elementIndex - 1].description = newDescription;
   saveDataLocally(tasks);
-}
+};

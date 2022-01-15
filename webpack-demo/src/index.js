@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-// eslint-disable-next-line import/no-cycle
+//eslint-disable-next-line import/no-cycle;
 
 import _ from 'lodash';
 import './style.css';
@@ -8,10 +8,10 @@ import {
   add,
   clearDiv,
   changeInput,
-  removeItemAt
+  removeItemAt,
 } from './addRemove.js';
 
-export let tasks = [];
+export const tasks = [];
 
 const myList = document.querySelector('.task-lists');
 
@@ -21,7 +21,7 @@ export const generateList = (array) => {
   clearDiv(myList);
 
   for (let i = 0; i < array.length; i += 1) {
-    let item = array[i];
+    const item = array[i];
     item.index = i + 1;
     const listItem = document.createElement('li');
     listItem.classList.add('item');
@@ -73,12 +73,12 @@ myList.addEventListener('change', (e) => {
 export const saveDataLocally = (toSave) => {
   const stringifiedList = JSON.stringify(toSave);
   localStorage.setItem('list', stringifiedList);
-}
+};
 
 window.onload = () => {
   if (localStorage.getItem('list') !== null) {
     const retrievedList = JSON.parse(localStorage.getItem('list'));
     tasks = retrievedList;
     generateList(tasks);
-  };
+  }
 };

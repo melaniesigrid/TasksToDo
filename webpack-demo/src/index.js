@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
-// eslint-disable-next-line import/no-cycle
+
 
 import _ from 'lodash';
 import './style.css';
 
+// eslint-disable-next-line import/no-cycle
 import {
   add,
   clearDiv,
@@ -12,8 +13,10 @@ import {
   updateStorageValue
 } from './addRemove.js';
 
-export var tasks = [];
-// export let count = 0;
+let tasks = [];
+export function myTasks() {
+  return tasks;
+}
 
 const myList = document.querySelector('.task-lists');
 

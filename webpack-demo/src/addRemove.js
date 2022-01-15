@@ -1,18 +1,17 @@
 // eslint-disable-next-line import/no-cycle
-
-import { tasks, generateList, saveDataLocally } from './index.js';
+import { myTasks, generateList, saveDataLocally } from './index.js';
 
 export const add = () => {
   const textInputValue = document.querySelector('#add-input').value;
   const TaskItem = {
     description: textInputValue,
     completed: false,
-    index: tasks.length + 1,
+    index: myTasks().length + 1,
   }
 
   let addedItem = TaskItem;
-  tasks.push(addedItem);
-  saveDataLocally(tasks);
+  myTasks().push(addedItem);
+  saveDataLocally(myTasks());
 };
 
 export const clearDiv = (div) => {
@@ -22,9 +21,9 @@ export const clearDiv = (div) => {
 }
 
 export const removeItemAt = (index) => {
-  tasks.splice(index - 1, 1);
-  generateList(tasks);
-  saveDataLocally(tasks);
+  myTasks().splice(index - 1, 1);
+  generateList(myTasks());
+  saveDataLocally(myTasks());
 }
 
 export const changeInput = (element) => {
@@ -32,6 +31,6 @@ export const changeInput = (element) => {
   let elementIndex = element.getAttribute('index');
   console.log(newDescription);
   console.log(elementIndex);
-  tasks[elementIndex - 1].description = newDescription;
-  saveDataLocally(tasks);
+  myTasks()[elementIndex - 1].description = newDescription;
+  saveDataLocally(myTasks());
 }

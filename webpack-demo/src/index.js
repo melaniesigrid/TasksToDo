@@ -1,6 +1,4 @@
 /* eslint-disable no-unused-vars */
-
-
 import _ from 'lodash';
 import './style.css';
 
@@ -10,7 +8,6 @@ import {
   clearDiv,
   changeInput,
   removeItemAt,
-  updateStorageValue
 } from './addRemove.js';
 
 let tasks = [];
@@ -21,13 +18,12 @@ export function myTasks() {
 const myList = document.querySelector('.task-lists');
 
 export const generateList = (array) => {
-
   array = array.sort((a, b) => a.index - b.index);
 
   clearDiv(myList);
 
   for (let i = 0; i < array.length; i += 1) {
-    let item = array[i];
+    const item = array[i];
     item.index = i + 1;
     const listItem = document.createElement('li');
     listItem.classList.add('item');
@@ -54,7 +50,7 @@ export const generateList = (array) => {
   }
 };
 
-document.querySelector('#add-input').addEventListener('keypress', function (e) {
+document.querySelector('#add-input').addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     add();
     const retrievedList = JSON.parse(localStorage.getItem('list'));
@@ -63,25 +59,23 @@ document.querySelector('#add-input').addEventListener('keypress', function (e) {
 });
 
 myList.addEventListener('click', (event) => {
-  let elementClicked = event.target;
-  let job = elementClicked.getAttribute('job');
-  let clickedIndex = elementClicked.getAttribute('index');
-  if (job == 'delete') {
+  const elementClicked = event.target;
+  const job = elementClicked.getAttribute('job');
+  const clickedIndex = elementClicked.getAttribute('index');
+  if (job === 'delete') {
     removeItemAt(clickedIndex);
   }
 });
 
 myList.addEventListener('change', (e) => {
   let changedElement = e.target;
-  console.log(changedElement);
   changeInput(changedElement);
 });
-
 
 export const saveDataLocally = (toSave) => {
   const stringifiedList = JSON.stringify(toSave);
   localStorage.setItem('list', stringifiedList);
-}
+};
 
 window.onload = () => {
   if (localStorage.getItem('list') !== null) {

@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
-//eslint-disable-next-line import/no-cycle;
 
 import _ from 'lodash';
 import './style.css';
-
+// eslint-disable-next-line import/no-cycle;
 import {
   add,
   clearDiv,

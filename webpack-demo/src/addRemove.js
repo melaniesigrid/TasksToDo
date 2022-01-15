@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
-// eslint-disable-next-line import/no-cycle
-
+// eslint-disable-next-line import/no-cycle;
 import { tasks, generateList, saveDataLocally } from './index.js';
 
 export const add = () => {
@@ -20,13 +19,13 @@ export const clearDiv = (div) => {
   while (div.firstChild) {
     div.removeChild(div.firstChild);
   }
-}
+};
 
 export const removeItemAt = (index) => {
   tasks.splice(index - 1, 1);
   generateList(tasks);
   saveDataLocally(tasks);
-}
+};
 
 export const changeInput = (element) => {
   const newDescription = element.value;

@@ -2,6 +2,8 @@
 // eslint-disable-next-line import/no-cycle
 import { tasks, generateList, saveDataLocally } from './index.js';
 
+export let tasks = [];
+
 export const add = () => {
   const textInputValue = document.querySelector('#add-input').value;
   const TaskItem = {

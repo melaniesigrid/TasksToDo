@@ -5,14 +5,13 @@ import './style.css';
 // eslint-disable-next-line import/no-cycle
 import {
   add,
+  tasks,
   clearDiv,
   changeInput,
   removeItemAt,
 } from './addRemove.js';
 
-export let tasks = [];
-
-let myList = document.querySelector('.task-lists');
+const myList = document.querySelector('.task-lists');
 
 export const generateList = (array) => {
   array = array.sort((a, b) => a.index - b.index);
@@ -76,7 +75,7 @@ export const saveDataLocally = (toSave) => {
 
 window.onload = () => {
   if (localStorage.getItem('list') !== null) {
-    let retrievedList = JSON.parse(localStorage.getItem('list'));
+    const retrievedList = JSON.parse(localStorage.getItem('list'));
     tasks = retrievedList;
     generateList(tasks);
   }

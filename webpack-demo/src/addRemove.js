@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-// eslint-disable-next-line import/no-cycle;
+// eslint-disable-next-line import/no-cycle
 import { tasks, generateList, saveDataLocally } from './index.js';
 
 export const add = () => {

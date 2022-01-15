@@ -2,7 +2,7 @@
 
 import _ from 'lodash';
 import './style.css';
-// eslint-disable-next-line import/no-cycle;
+// eslint-disable-next-line import/no-cycle
 import {
   add,
   clearDiv,
@@ -10,9 +10,9 @@ import {
   removeItemAt,
 } from './addRemove.js';
 
-export const tasks = [];
+export let tasks = [];
 
-const myList = document.querySelector('.task-lists');
+let myList = document.querySelector('.task-lists');
 
 export const generateList = (array) => {
   array = array.sort((a, b) => a.index - b.index);
@@ -76,7 +76,7 @@ export const saveDataLocally = (toSave) => {
 
 window.onload = () => {
   if (localStorage.getItem('list') !== null) {
-    const retrievedList = JSON.parse(localStorage.getItem('list'));
+    let retrievedList = JSON.parse(localStorage.getItem('list'));
     tasks = retrievedList;
     generateList(tasks);
   }

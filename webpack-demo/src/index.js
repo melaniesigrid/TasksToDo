@@ -8,10 +8,11 @@ import {
   clearDiv,
   changeInput,
   removeItemAt,
-} from './addRemove.js'
+} from './addRemove.js';
+// eslint-disable-next-line import/no-cycle
 import {
   completeThis,
-  clearComplete
+  clearComplete,
 } from './completeTasks';
 
 let tasks = [];

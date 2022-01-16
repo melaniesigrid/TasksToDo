@@ -1,15 +1,15 @@
+// eslint-disable-next-line import/no-cycle
 import {
   myTasks,
-  generateList,
-  saveDataLocally
+  saveDataLocally,
 } from './index.js';
-
+// eslint-disable-next-line import/no-cycle
 import { removeItemAt } from './addRemove.js'
 
 export const completeThis = (element) => {
   const nextInput = element.nextSibling;
   const elementIndex = element.getAttribute('index');
-  let isComplete = myTasks()[elementIndex - 1].completed;
+  const isComplete = myTasks()[elementIndex - 1].completed;
   nextInput.classList.toggle('complete');
   if (isComplete === true) {
     myTasks()[elementIndex - 1].completed = false;

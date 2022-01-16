@@ -8,7 +8,11 @@ import {
   clearDiv,
   changeInput,
   removeItemAt,
-} from './addRemove.js';
+} from './addRemove.js'
+import {
+  completeThis,
+  clearComplete
+} from './completeTasks';
 
 let tasks = [];
 export function myTasks() {
@@ -30,14 +34,20 @@ export const generateList = (array) => {
 
     const itemCheckbox = document.createElement('input');
     itemCheckbox.type = 'checkbox';
+    itemCheckbox.checked = item.completed;
     itemCheckbox.setAttribute('index', `${item.index}`);
+    itemCheckbox.setAttribute('job', 'complete');
     listItem.appendChild(itemCheckbox);
 
     const taskInput = document.createElement('input');
+    taskInput.setAttribute('job', 'change');
     taskInput.setAttribute('type', 'text');
     taskInput.setAttribute('index', `${item.index}`);
     taskInput.setAttribute('value', `${item.description}`);
     taskInput.classList.add('description-text');
+    if (item.completed) {
+      taskInput.classList.add('complete');
+    }
     listItem.appendChild(taskInput);
 
     const garbage = document.createElement('i');
@@ -65,11 +75,23 @@ myList.addEventListener('click', (event) => {
   if (job === 'delete') {
     removeItemAt(clickedIndex);
   }
+  if (job === 'complete') {
+    completeThis(elementClicked);
+  }
 });
 
 myList.addEventListener('change', (e) => {
-  const changedElement = e.target;
-  changeInput(changedElement);
+  if (e.target.getAttribute('job') === 'change') {
+    const changedElement = e.target;
+    changeInput(changedElement);
+  }
+});
+
+document.getElementById('delete-all').addEventListener('click', (e) => {
+  // let myParsedArray = JSON.parse(localStorage.getItem('list'));
+  e.preventDefault();
+  clearComplete(myTasks());
+  generateList(tasks);
 });
 
 export const saveDataLocally = (toSave) => {

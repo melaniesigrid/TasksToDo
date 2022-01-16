@@ -4,7 +4,7 @@ import {
   saveDataLocally,
 } from './index.js';
 // eslint-disable-next-line import/no-cycle
-import { removeItemAt } from './addRemove.js'
+import { removeItemAt } from './addRemove.js';
 
 export const completeThis = (element) => {
   const nextInput = element.nextSibling;

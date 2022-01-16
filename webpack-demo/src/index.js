@@ -13,7 +13,7 @@ import {
 import {
   completeThis,
   clearComplete,
-} from './completeTasks';
+} from './completeTasks.js';
 
 let tasks = [];
 export function myTasks() {

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,14 +28,18 @@
         <form class="to-do">
           <div class="title">
             <input type="text" value="Today's To Do" class="text-input">
-            <i class="icon fas fa-sync-alt"></i>
+            <i class="icon fas fa-sync-alt restart"></i>
           </div>
           <div class="enter-element">
-            <input type="text" placeholder="Add to your list..." class="add">
-            <i class="icon fas fa-sign-in-alt"></i>
+            <input type="text" placeholder="Add to your list..." class="add" id="add-input">
+            <i class="icon fas fa-sign-in-alt enter"></i>
           </div>
-          <div id="unordered-list" class="task-lists"></div>
-          <div class="delete"><button class="delete-all" type="reset">Clear all completed</button></div>
+          
+          <ul id="unordered-list" class="task-lists">
+            
+          </ul>
+          
+          <div class="delete"><button class="delete-all" id="delete-all">Clear all completed</button></div>
         </form>
       </div>
     </div>

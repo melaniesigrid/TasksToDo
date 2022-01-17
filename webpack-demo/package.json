@@ -10,9 +10,17 @@
     "build": "webpack",
     "deploy": "gh-pages -d dist"
   },
+    "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melaniesigrid/TasksToDo.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+    "bugs": {
+    "url": "https://github.com/melaniesigrid/TasksToDo/issues"
+  },
+  "homepage": "https://github.com/melaniesigrid/TasksToDo#readme",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.5.1",

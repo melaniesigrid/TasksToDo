@@ -1,7 +1,7 @@
 {
   "name": "webpack-demo",
   "version": "1.0.0",
-  "description": "",
+  "description": "![](https://img.shields.io/badge/Microverse-blueviolet)",
   "main": "index.js",
   "private": true,
   "scripts": {
@@ -33,5 +33,13 @@
   "dependencies": {
     "babel-loader": "^8.2.3",
     "lodash": "^4.17.21"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melaniesigrid/TasksToDo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/melaniesigrid/TasksToDo/issues"
+  },
+  "homepage": "https://github.com/melaniesigrid/TasksToDo#readme"
 }

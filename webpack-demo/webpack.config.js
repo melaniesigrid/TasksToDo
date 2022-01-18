@@ -7,9 +7,9 @@ module.exports = {
   devServer: {
     static: './dist',
   },
-    plugins: [
+  plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
     }),
   ],
   output: {
